@@ -5,7 +5,6 @@ provider "aws" {
   secret_key = ""
 #You can change the region based on wherever you're located  
   region = "us-east-1"
-  #profile = "Admin"
 }
 
 # create instance
