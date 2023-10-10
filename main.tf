@@ -8,45 +8,26 @@ provider "aws" {
 }
 
 # create instance
-#resource "aws_instance" "web_server01" {
-  #ami = "ami-053b0d53c279acc90"
+resource "aws_instance" "web_server01" {
+  ami = "ami-053b0d53c279acc90"
 #select an instance type eg. t2.micro, t2.medium
-  #instance_type = ""
+  instance_type = "t2.micro"
   #vpc_security_group_ids = [aws_security_group.web_ssh.id]
+#include a subnet id to reference an existing vpc
+subnet_id = ""
 #input a key-pair name if you'd like in ""
   #key_name = ""
 
-#
-resource "aws_vpc" "main" {
-  cidr_block = "0.0.0.0/16"
-
- tags = {
-#You can name the VPC in the ""
-   Name = ""
- }
-}
-
-resource "aws_subnet" "main" {
-#Reference vpc_id if using an existing one"
-  vpc_id     = 
-  cidr_block = "0.0.0.0/24"
-
-  tags = {
-    Name = "pubsubnet_a"
-  }
-}
 
 #Input a file that will deploy Jenkins/vs code in user_data(make sure its a .sh script eg."deploy.sh") 
-user_data = "${file("")}"
+#user_data = "${file("")}"
 
-#The new name of the server 
   tags = {
     "Name" : "tf_practice"
   }
 
 }
 
-#outputs new instance IP in the terminal 
 output "instance_ip" {
   value = aws_instance.web_server01.public_ip
 }
