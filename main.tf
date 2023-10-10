@@ -20,7 +20,7 @@ subnet_id = ""
 
 
 #Input a file that will deploy Jenkins/vs code in user_data(make sure its a .sh script eg."deploy.sh") 
-#user_data = "${file("")}"
+user_data = "${file("")}"
 
   tags = {
     "Name" : "tf_practice"
