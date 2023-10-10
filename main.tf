@@ -18,12 +18,22 @@ provider "aws" {
 
 #
 resource "aws_vpc" "main" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "0.0.0.0/16"
 
  tags = {
 #You can name the VPC in the ""
    Name = ""
  }
+}
+
+resource "aws_subnet" "main" {
+#Reference vpc_id if using an existing one"
+  vpc_id     = 
+  cidr_block = "0.0.0.0/24"
+
+  tags = {
+    Name = "pubsubnet_a"
+  }
 }
 
 #Input a file that will deploy Jenkins/vs code in user_data(make sure its a .sh script eg."deploy.sh") 
