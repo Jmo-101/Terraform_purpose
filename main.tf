@@ -10,7 +10,18 @@ provider "aws" {
 
 # create instance
 resource "aws_instance" "web_server01" {
-  ami = "ami-08c40ec9ead489470"
+  ami = "ami-053b0d53c279acc90"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.web_ssh.id]
-  #key_name = "ubuntuSandbox"
+#input a key-pair name if you'd like in ""
+  #key_name = ""
+
+#Input a file that will deploy Jenkins in user_data 
+user_data = "${file("deploy.sh")}"
+
+#The new name of the server 
+  tags = {
+    "Name" : "tf_practice"
+  }
+
+}
