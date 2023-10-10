@@ -16,8 +16,8 @@ resource "aws_instance" "web_server01" {
 #input a key-pair name if you'd like in ""
   #key_name = ""
 
-#Input a file that will deploy Jenkins in user_data 
-user_data = "${file("deploy.sh")}"
+#Input a file that will deploy Jenkins/vs code in user_data(make sure its a .sh script eg."deploy.sh") 
+user_data = "${file("")}"
 
 #The new name of the server 
   tags = {
